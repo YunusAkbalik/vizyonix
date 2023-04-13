@@ -57,7 +57,8 @@
                                 </div>
                                 <div class="mb4">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" value="1" id="on_sale" name="on_sale" checked>
+                                        <input class="form-check-input" type="checkbox" value="1" id="on_sale"
+                                               name="on_sale" checked>
                                         <label class="form-check-label" for="on_sale">Satışta</label>
                                     </div>
                                 </div>
@@ -79,7 +80,7 @@
 @section('js')
     <script src="{{asset('js/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('js/plugins/jquery-validation/additional-methods.js')}}"></script>
-{{--    <script src="{{asset('js/pages/validations/product.js')}}"></script>--}}
+    <script src="{{asset('js/pages/validations/product.js')}}"></script>
     <script src="{{asset('js/plugins/ckeditor/ckeditor.js')}}"></script>
     <script>Dashmix.helpersOnLoad(['js-ckeditor']);</script>
 

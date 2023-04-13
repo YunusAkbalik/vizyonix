@@ -82,7 +82,7 @@ class FileUpload
     protected function validate(UploadedFile $file): bool
     {
         if (!$this->mimeTypeControl($file)) {
-            $this->setErrorMessage(self::ERROR_NOT_VALID_EXTENSION);
+            $this->setErrorMessage(self::ERROR_NOT_VALID_EXTENSION . ' (' . implode(',', $this->mimeTypes) . ')');
             return false;
         }
 

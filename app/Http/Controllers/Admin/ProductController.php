@@ -61,8 +61,10 @@ class ProductController extends Controller
                 'category_id' => $request->input('category_id')
             ]);
             $job->setRequestFileName('files');
-            if (!$job->save()) {
-                throw new Exception($job->getErrorMessage());
+            if (request()->file('files')) {
+                if (!$job->save()) {
+                    throw new Exception($job->getErrorMessage());
+                }
             }
             foreach ($job->getFilePaths() as $path) {
                 ProductImage::create([
