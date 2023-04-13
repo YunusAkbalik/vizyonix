@@ -280,6 +280,13 @@
                             <span class="nav-main-link-name">Ürünler</span>
                         </a>
                     </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link {{ Route::currentRouteName() == 'admin_category_index' ? 'active' : '' }}"
+                           href="{{ route('admin_category_index') }}">
+                            <i class="nav-main-link-icon fa fa-boxes"></i>
+                            <span class="nav-main-link-name">Kategoriler</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- END Side Navigation -->

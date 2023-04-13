@@ -11,8 +11,8 @@
     <div class="bg-body-light">
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-                <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Ürünler</h1>
-                <button class="btn btn-success"><i class="fa fa-plus-circle"></i> Ürün Ekle</button>
+                <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Kategoriler</h1>
+                <button class="btn btn-success"><i class="fa fa-plus-circle"></i> Kategori Ekle</button>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">
-                    Ürün Listesi
+                    Kategori Listesi
                 </h3>
             </div>
             <div class="block-content">
@@ -32,22 +32,14 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Medya</th>
                         <th>Başlık</th>
-                        <th>Açıklama</th>
-                        <th>Fiyat</th>
-                        <th>Satış</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($products as $product)
+                    @foreach($categories as $category)
                         <tr>
-                            <td>#{{$product->id}}</td>
-                            <td><img src="{{$product->image[0]->path}}" alt="{{$product->title}}" width="150px"> </td>
-                            <td>{{$product->title}}</td>
-                            <td>{{$product->description}}</td>
-                            <td>@moneyFormat($product->price) $</td>
-                            <td class="text-{{$product->on_sale ? 'success':'danger'}}"><i class="fa-regular fa-circle-{{$product->on_sale ? 'check':'xmark'}}"></i></td>
+                            <td>#{{$category->id}}</td>
+                            <td>{{$category->title}}</td>
                         </tr>
                     @endforeach
                     </tbody>
