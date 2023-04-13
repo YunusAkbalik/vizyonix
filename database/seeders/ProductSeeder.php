@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\ProductModel;
+use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -10,25 +10,30 @@ class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        ProductModel::query()->insert([
-            [
-                'title' => 'Monitör',
-                'description' => '10 Numara monitör bu aga',
-                'price' => 1550
-            ],
+        Product::query()->insert([
             [
                 'title' => 'Klavye',
-                'description' => '10 Numara klavye bu aga',
-                'price' => 240
+                'description' => "Bu güzel bir klavye",
+                'price' => 209.90,
+                'on_sale' => true
             ],
             [
-                'title' => 'Mouse',
-                'description' => '10 Numara mouse bu aga',
-                'price' => 31.5
+                'title' => 'Monitör',
+                'description' => "360 hz monitör",
+                'price' => 4950,
+                'on_sale' => true
             ],
+            [
+                'title' => 'Cloud II',
+                'description' => "Yeni model Cloud II",
+                'price' => 2850,
+                'on_sale' => false
+            ]
         ]);
     }
 }
