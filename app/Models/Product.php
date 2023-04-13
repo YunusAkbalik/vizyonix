@@ -14,6 +14,15 @@ class Product extends Model
     protected $table = "product";
     protected $guarded = [];
 
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($product) {
+            $product->image()->delete();
+            $product->category()->delete();
+        });
+    }
+
     public function image(): HasMany
     {
         return $this->hasMany(ProductImage::class, 'product_id');

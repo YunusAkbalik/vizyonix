@@ -143,4 +143,20 @@ class ProductController extends Controller
             return redirect()->route('admin_product_edit', ['id' => $request->product_id])->withErrors($exception->getMessage());
         }
     }
+
+    public function destroy(Request $request)
+    {
+        try {
+            $product = Product::find($request->id);
+            File::delete($product->main_image);
+            $productImages = ProductImage::where('product_id', $product->id)->get();
+            foreach ($productImages as $image) {
+                File::delete($image->path);
+            }
+            Product::destroy($request->id);
+            return response()->json(['message' => 'Ürün başarıyla silindi']);
+        } catch (Exception $exception) {
+            return response()->json(['message' => 'Ürünü silinirken bir hata oluştu', 'error_message' => $exception->getMessage()], $exception->getCode() ?: 400);
+        }
+    }
 }

@@ -26,6 +26,7 @@ Route::prefix('product')->group(function () {
     Route::get('/{id}',[ProductController::class , 'edit'])->name('admin_product_edit');
     Route::post('image_delete',[ProductImageController::class , 'destroy'])->name('admin_product_delete_image');
     Route::post('update',[ProductController::class , 'update'])->name('admin_product_update');
+    Route::post('destroy',[ProductController::class , 'destroy'])->name('admin_product_destroy');
 });
 
 Route::prefix('category')->group(function () {

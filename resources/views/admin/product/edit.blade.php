@@ -10,6 +10,9 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Ürün Düzenle</h1>
+                <button onclick="deleteProduct({{$product->id}})" class="btn btn-danger"><i class="fa fa-trash"></i>
+                    Ürünü Sil
+                </button>
             </div>
         </div>
     </div>
@@ -114,7 +117,6 @@
     <script>Dashmix.helpersOnLoad(['js-ckeditor']);</script>
     <script>
         function deleteProductImage(id, e) {
-            console.log(id)
             Swal.fire({
                 title: 'Emin misiniz',
                 text: "Bu silme işlemini geri alamazsınız!",
@@ -146,6 +148,40 @@
                 }
             })
 
+        }
+
+        function deleteProduct(id) {
+            Swal.fire({
+                title: 'Emin misiniz',
+                text: "Bu silme işlemini geri alamazsınız!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: "İptal"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    sendRequest('{{route('admin_product_destroy')}}', 'POST', {id: id})
+                        .then((res) => {
+                            Swal.fire(
+                                'Başarılı',
+                                res.data.message,
+                                'success'
+                            ).then(() => {
+                                location.href = "{{route('admin_product_index')}}"
+                            })
+                        })
+                        .catch((e) => {
+                            console.log(e)
+                            Swal.fire(
+                                'Başarısız',
+                                e.response.data.message,
+                                'error'
+                            )
+                        })
+                }
+            })
         }
     </script>
 @endsection
