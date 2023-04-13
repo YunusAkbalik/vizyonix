@@ -24,4 +24,6 @@ Route::prefix('product')->group(function () {
 
 Route::prefix('category')->group(function () {
     Route::get('/',[CategoryController::class , 'index'])->name('admin_category_index');
+    Route::get('create',[CategoryController::class , 'create'])->name('admin_category_create');
+    Route::post('store',[CategoryController::class , 'store'])->name('admin_category_store');
 });

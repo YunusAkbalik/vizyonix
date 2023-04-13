@@ -12,7 +12,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Kategoriler</h1>
-                <button class="btn btn-success"><i class="fa fa-plus-circle"></i> Kategori Ekle</button>
+                <a href="{{route('admin_category_create')}}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Kategori Ekle</a>
             </div>
         </div>
     </div>
