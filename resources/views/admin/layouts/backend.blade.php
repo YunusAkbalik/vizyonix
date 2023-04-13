@@ -24,7 +24,8 @@
     <script>
         Dashmix.helpersOnLoad(['jq-notify']);
     </script>
-
+    <script src="{{ asset('js/lib/axios.min.js') }}"></script>
+    <script src="{{ asset('js/helpers/ApiRequest.js') }}"></script>
 
     <!-- Alternatively, you can also include a specific color theme after the main stylesheet to alter the default color theme of the template -->
     {{-- @vite(['resources/sass/main.scss', 'resources/sass/dashmix/themes/xwork.scss', 'resources/js/dashmix/app.js']) --}}

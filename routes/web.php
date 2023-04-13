@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\ProductImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,9 @@ Route::prefix('product')->group(function () {
     Route::get('/',[ProductController::class , 'index'])->name('admin_product_index');
     Route::get('create',[ProductController::class , 'create'])->name('admin_product_create');
     Route::post('store',[ProductController::class , 'store'])->name('admin_product_store');
+    Route::get('/{id}',[ProductController::class , 'edit'])->name('admin_product_edit');
+    Route::post('image_delete',[ProductImageController::class , 'destroy'])->name('admin_product_delete_image');
+    Route::post('update',[ProductController::class , 'update'])->name('admin_product_update');
 });
 
 Route::prefix('category')->group(function () {

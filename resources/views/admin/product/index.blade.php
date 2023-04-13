@@ -8,13 +8,14 @@
 
 @section('content')
     <!-- Hero -->
-    <div class="bg-body-light">
-        <div class="content content-full">
-            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-                <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Ürünler</h1>
-                <a href="{{route('admin_product_create')}}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Ürün Ekle</a>
-            </div>
+    <div class=" bg-body-light">
+    <div class="content content-full">
+        <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
+            <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Ürünler</h1>
+            <a href="{{route('admin_product_create')}}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Ürün
+                Ekle</a>
         </div>
+    </div>
     </div>
     <!-- END Hero -->
 
@@ -42,12 +43,14 @@
                     <tbody>
                     @foreach($products as $product)
                         <tr>
-                            <td>#{{$product->id}}</td>
-                            <td><img src="{{$product->main_image}}" alt="{{$product->title}}" width="150px"> </td>
+                            <td><a href="{{route('admin_product_edit',['id' => $product->id])}}">#{{$product->id}}</a>
+                            </td>
+                            <td><img src="{{$product->main_image}}" alt="{{$product->title}}" width="150px"></td>
                             <td>{{$product->title}}</td>
                             <td>{{$product->category->category->title}}</td>
                             <td>@moneyFormat($product->price) $</td>
-                            <td class="text-{{$product->on_sale ? 'success':'danger'}}"><i class="fa-regular fa-circle-{{$product->on_sale ? 'check':'xmark'}}"></i></td>
+                            <td class="text-{{$product->on_sale ? 'success':'danger'}}"><i
+                                    class="fa-regular fa-circle-{{$product->on_sale ? 'check':'xmark'}}"></i></td>
                         </tr>
                     @endforeach
                     </tbody>
