@@ -53,7 +53,8 @@ class ProductController extends Controller
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
                 'price' => $request->input('price'),
-                'main_image' => $job->getFilePaths()[0]
+                'main_image' => $job->getFilePaths()[0],
+                'on_sale' => $request->input('on_sale') ? true : false,
             ]);
             ProductCategory::create([
                 'product_id' => $product->id,
