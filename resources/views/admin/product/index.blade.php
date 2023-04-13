@@ -35,6 +35,7 @@
                         <th>Medya</th>
                         <th>Başlık</th>
                         <th>Açıklama</th>
+                        <th>Kategori</th>
                         <th>Fiyat</th>
                         <th>Satış</th>
                     </tr>
@@ -46,6 +47,7 @@
                             <td><img src="{{$product->image[0]->path}}" alt="{{$product->title}}" width="150px"> </td>
                             <td>{{$product->title}}</td>
                             <td>{{$product->description}}</td>
+                            <td>{{$product->category->category->title}}</td>
                             <td>@moneyFormat($product->price) $</td>
                             <td class="text-{{$product->on_sale ? 'success':'danger'}}"><i class="fa-regular fa-circle-{{$product->on_sale ? 'check':'xmark'}}"></i></td>
                         </tr>

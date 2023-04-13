@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('image')->get();
+        $products = Product::with('image')->with('category')->get();
         return view('admin.product.index')->with([
             'products' => $products
         ]);
