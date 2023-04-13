@@ -18,13 +18,13 @@ class ProductImageSeeder extends Seeder
         ProductImage::query()->insert([
             [
                 'product_id' => 1,
-                'path' => 'media/images/product.jpg'
+                'path' => '/media/images/product.jpg'
             ], [
                 'product_id' => 2,
-                'path' => 'media/images/product.jpg'
+                'path' => '/media/images/product.jpg'
             ], [
                 'product_id' => 3,
-                'path' => 'media/images/product.jpg'
+                'path' => '/media/images/product.jpg'
             ],
         ]);
     }

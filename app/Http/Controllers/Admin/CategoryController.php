@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Validators\Category\CategoryValidator;
+use App\Http\Controllers\Controller;
+use App\Http\Validators\CategoryValidator;
 use App\Models\Category;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Exception;
 
 class CategoryController extends Controller
 {

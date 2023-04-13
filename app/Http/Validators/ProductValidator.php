@@ -1,24 +1,28 @@
 <?php
 
-namespace App\Http\Validators\Category;
+namespace App\Http\Validators;
 
-use Illuminate\Support\Facades\Validator;
 use Exception;
+use Illuminate\Support\Facades\Validator;
 
-trait CategoryValidator
+trait ProductValidator
 {
     public function rules(): array
     {
         return [
             'title' => 'required|string|max:255',
+            'category_id' => 'required|numeric',
+            'price' => 'required|numeric',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'title.required' => 'Lütfen kategori başlığı giriniz',
-            'title.*' => 'Lütfen geçerli bir kategori başlığı giriniz',
+            'title.required' => 'Lütfen ürün başlığı giriniz',
+            'title.*' => 'Lütfen geçerli bir ürün başlığı giriniz',
+            'category_id.*' => 'Lütfen geçerli bir kategori seçiniz',
+            'price.*' => 'Lütfen geçerli bir fiyat giriniz',
         ];
     }
 

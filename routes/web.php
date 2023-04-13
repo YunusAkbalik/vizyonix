@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +20,8 @@ Route::get('/',[HomeController::class , 'index']);
 
 Route::prefix('product')->group(function () {
     Route::get('/',[ProductController::class , 'index'])->name('admin_product_index');
+    Route::get('create',[ProductController::class , 'create'])->name('admin_product_create');
+    Route::post('store',[ProductController::class , 'store'])->name('admin_product_store');
 });
 
 Route::prefix('category')->group(function () {

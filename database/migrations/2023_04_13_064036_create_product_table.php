@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText("description")->nullable();
             $table->float("price");
             $table->boolean("on_sale")->default(true);
+            $table->string("main_image");
             $table->timestamps();
         });
     }

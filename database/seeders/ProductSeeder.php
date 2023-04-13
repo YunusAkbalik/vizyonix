@@ -20,19 +20,22 @@ class ProductSeeder extends Seeder
                 'title' => 'Klavye',
                 'description' => "Bu güzel bir klavye",
                 'price' => 209.90,
-                'on_sale' => true
+                'on_sale' => true,
+                'main_image' => "/media/images/product.jpg"
             ],
             [
                 'title' => 'Monitör',
                 'description' => "360 hz monitör",
                 'price' => 4950,
-                'on_sale' => true
+                'on_sale' => true,
+                'main_image' => "/media/images/product.jpg"
             ],
             [
                 'title' => 'Cloud II',
                 'description' => "Yeni model Cloud II",
                 'price' => 2850,
-                'on_sale' => false
+                'on_sale' => false,
+                'main_image' => "/media/images/product.jpg"
             ]
         ]);
     }

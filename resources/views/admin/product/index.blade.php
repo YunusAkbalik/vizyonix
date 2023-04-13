@@ -12,7 +12,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Ürünler</h1>
-                <button class="btn btn-success"><i class="fa fa-plus-circle"></i> Ürün Ekle</button>
+                <a href="{{route('admin_product_create')}}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Ürün Ekle</a>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                     @foreach($products as $product)
                         <tr>
                             <td>#{{$product->id}}</td>
-                            <td><img src="{{$product->image[0]->path}}" alt="{{$product->title}}" width="150px"> </td>
+                            <td><img src="{{$product->main_image}}" alt="{{$product->title}}" width="150px"> </td>
                             <td>{{$product->title}}</td>
                             <td>{{$product->description}}</td>
                             <td>{{$product->category->category->title}}</td>
