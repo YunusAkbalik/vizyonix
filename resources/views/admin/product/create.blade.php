@@ -55,12 +55,16 @@
                                            accept="image/png,image/jpg,image/jpeg" type="file" name="files[]" multiple
                                            id="files[]">
                                 </div>
-                                <div class="mb4">
+                                <div class="mb-4">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" value="1" id="on_sale"
                                                name="on_sale" checked>
                                         <label class="form-check-label" for="on_sale">Satışta</label>
                                     </div>
+                                </div>
+                                <div class="mb-4">
+                                    <input type="text" class="form-control form-control-lg form-control-alt"
+                                           id="link" name="link" placeholder="Ürün Linki">
                                 </div>
                             </div>
                             <div class="mb-4">

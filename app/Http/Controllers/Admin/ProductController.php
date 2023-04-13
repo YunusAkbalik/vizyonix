@@ -56,6 +56,7 @@ class ProductController extends Controller
                 'price' => $request->input('price'),
                 'main_image' => $job->getFilePaths()[0],
                 'on_sale' => $request->input('on_sale') ? true : false,
+                'link' => $request->input('link'),
             ]);
             ProductCategory::create([
                 'product_id' => $product->id,
@@ -110,6 +111,7 @@ class ProductController extends Controller
             $product->description = $request->description;
             $product->price = $request->price;
             $product->on_sale = $request->input('on_sale') ? true : false;
+            $product->link = $request->link;
             $job = new FileUpload();
             $job->setMimeTypes(['png', 'jpg', 'jpeg']);
             $job->setPath('images/product');

@@ -66,7 +66,8 @@
                                         <div class="col-md-4 text-center mb-4">
                                             <img src="{{asset($image->path)}}" width="100%" alt="product">
                                             <button onclick="deleteProductImage({{$image->id}} , this)"
-                                                   type="button" class="mt-2 btn btn-danger"><i class="fa fa-trash"></i> Sil
+                                                    type="button" class="mt-2 btn btn-danger"><i
+                                                    class="fa fa-trash"></i> Sil
                                             </button>
                                         </div>
                                     @endforeach
@@ -78,6 +79,16 @@
                                         <label class="form-check-label" for="on_sale">Satışta</label>
                                     </div>
                                 </div>
+                                <div class="mb-4">
+                                    <input type="text" class="form-control form-control-lg form-control-alt"
+                                           id="link" name="link" value="{{$product->link}}" placeholder="Ürün Linki">
+                                </div>
+                                @if($product->link)
+                                    <div class="mb-4">
+                                        <a href="{{$product->link}}" target="_blank">Linke Git</a>
+                                    </div>
+                                @endif
+
                             </div>
                             <input type="hidden" name="product_id" value="{{$product->id}}">
                             <div class="mb-4">
