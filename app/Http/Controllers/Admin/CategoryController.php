@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -38,6 +39,33 @@ class CategoryController extends Controller
             return redirect()->route('admin_category_index')->with('success', 'Kategori Oluşturuldu');
         } catch (Exception $exception) {
             return redirect()->route('admin_category_create')->withErrors($exception->getMessage());
+        }
+    }
+
+    public function edit(Request $request)
+    {
+        try {
+            $category = Category::find($request->id);
+            if (!$category)
+                throw new Exception('Kategori bulunamadı');
+            return view('admin.category.edit')->with([
+                'category' => $category
+            ]);
+        } catch (Exception $exception) {
+            return redirect()->route('admin_category_index')->withErrors($exception->getMessage());
+        }
+    }
+
+    public function update(Request $request)
+    {
+        try {
+            $this->validations();
+            $category = Category::find(request()->input('category_id'));
+            $category->title = request()->input('title');
+            $category->save();
+            return redirect()->route('admin_category_index', ['id' => $category->id])->with('success', 'Kategori Güncellendi');
+        } catch (Exception $exception) {
+            return redirect()->route('admin_category_edit')->withErrors($exception->getMessage());
         }
     }
 }

@@ -28,4 +28,6 @@ Route::prefix('category')->group(function () {
     Route::get('/',[CategoryController::class , 'index'])->name('admin_category_index');
     Route::get('create',[CategoryController::class , 'create'])->name('admin_category_create');
     Route::post('store',[CategoryController::class , 'store'])->name('admin_category_store');
+    Route::get('/{id}',[CategoryController::class , 'edit'])->name('admin_category_edit');
+    Route::post('update',[CategoryController::class , 'update'])->name('admin_category_update');
 });

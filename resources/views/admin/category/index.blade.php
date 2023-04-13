@@ -8,13 +8,14 @@
 
 @section('content')
     <!-- Hero -->
-    <div class="bg-body-light">
-        <div class="content content-full">
-            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-                <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Kategoriler</h1>
-                <a href="{{route('admin_category_create')}}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Kategori Ekle</a>
-            </div>
+    <div class=" bg-body-light">
+    <div class="content content-full">
+        <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
+            <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Kategoriler</h1>
+            <a href="{{route('admin_category_create')}}" class="btn btn-success"><i class="fa fa-plus-circle"></i>
+                Kategori Ekle</a>
         </div>
+    </div>
     </div>
     <!-- END Hero -->
 
@@ -38,7 +39,9 @@
                     <tbody>
                     @foreach($categories as $category)
                         <tr>
-                            <td>#{{$category->id}}</td>
+                            <td>
+                                <a href="{{route('admin_category_edit',['id' => $category->id])}}">#{{$category->id}}</a>
+                            </td>
                             <td>{{$category->title}}</td>
                         </tr>
                     @endforeach
