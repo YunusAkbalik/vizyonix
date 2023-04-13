@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Validators\CategoryValidator;
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\ProductImage;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -68,4 +71,15 @@ class CategoryController extends Controller
             return redirect()->route('admin_category_edit')->withErrors($exception->getMessage());
         }
     }
+
+    public function destroy(Request $request)
+    {
+        try {
+            Category::destroy($request->id);
+            return response()->json(['message' => 'Kategori başarıyla silindi']);
+        } catch (Exception $exception) {
+            return response()->json(['message' => 'Kategori silinirken bir hata oluştu', 'error_message' => $exception->getMessage()], $exception->getCode() ?: 400);
+        }
+    }
+
 }

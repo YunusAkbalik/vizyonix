@@ -1,11 +1,16 @@
 @extends('admin.layouts.backend')
-
+@section('css')
+    <link rel="stylesheet" href="{{asset('js/plugins/sweetalert2/sweetalert2.min.css')}}">
+@endsection
 @section('content')
     <!-- Hero -->
     <div class="bg-body-light">
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Kategori Düzenle</h1>
+                <button onclick="deleteCategory({{$category->id}})" class="btn btn-danger"><i class="fa fa-trash"></i>
+                    Kategori Sil
+                </button>
             </div>
         </div>
     </div>
@@ -45,5 +50,40 @@
     <script src="{{asset('js/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('js/plugins/jquery-validation/additional-methods.js')}}"></script>
     <script src="{{asset('js/pages/validations/category.js')}}"></script>
-
+    <script src="{{asset('js/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+    <script>
+        function deleteCategory(id) {
+            Swal.fire({
+                title: 'Emin misiniz',
+                text: "Bu silme işlemini geri alamazsınız!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: "İptal"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    sendRequest('{{route('admin_category_destroy')}}', 'POST', {id: id})
+                        .then((res) => {
+                            Swal.fire(
+                                'Başarılı',
+                                res.data.message,
+                                'success'
+                            ).then(() => {
+                                location.href = "{{route('admin_category_index')}}"
+                            })
+                        })
+                        .catch((e) => {
+                            console.log(e)
+                            Swal.fire(
+                                'Başarısız',
+                                e.response.data.message,
+                                'error'
+                            )
+                        })
+                }
+            })
+        }
+    </script>
 @endsection

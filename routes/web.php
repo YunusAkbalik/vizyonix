@@ -17,22 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomeController::class , 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('product')->group(function () {
-    Route::get('/',[ProductController::class , 'index'])->name('admin_product_index');
-    Route::get('create',[ProductController::class , 'create'])->name('admin_product_create');
-    Route::post('store',[ProductController::class , 'store'])->name('admin_product_store');
-    Route::get('/{id}',[ProductController::class , 'edit'])->name('admin_product_edit');
-    Route::post('image_delete',[ProductImageController::class , 'destroy'])->name('admin_product_delete_image');
-    Route::post('update',[ProductController::class , 'update'])->name('admin_product_update');
-    Route::post('destroy',[ProductController::class , 'destroy'])->name('admin_product_destroy');
+    Route::get('/', [ProductController::class, 'index'])->name('admin_product_index');
+    Route::get('create', [ProductController::class, 'create'])->name('admin_product_create');
+    Route::post('store', [ProductController::class, 'store'])->name('admin_product_store');
+    Route::get('/{id}', [ProductController::class, 'edit'])->name('admin_product_edit');
+    Route::post('image_delete', [ProductImageController::class, 'destroy'])->name('admin_product_delete_image');
+    Route::post('update', [ProductController::class, 'update'])->name('admin_product_update');
+    Route::post('destroy', [ProductController::class, 'destroy'])->name('admin_product_destroy');
 });
 
 Route::prefix('category')->group(function () {
-    Route::get('/',[CategoryController::class , 'index'])->name('admin_category_index');
-    Route::get('create',[CategoryController::class , 'create'])->name('admin_category_create');
-    Route::post('store',[CategoryController::class , 'store'])->name('admin_category_store');
-    Route::get('/{id}',[CategoryController::class , 'edit'])->name('admin_category_edit');
-    Route::post('update',[CategoryController::class , 'update'])->name('admin_category_update');
+    Route::get('/', [CategoryController::class, 'index'])->name('admin_category_index');
+    Route::get('create', [CategoryController::class, 'create'])->name('admin_category_create');
+    Route::post('store', [CategoryController::class, 'store'])->name('admin_category_store');
+    Route::get('/{id}', [CategoryController::class, 'edit'])->name('admin_category_edit');
+    Route::post('update', [CategoryController::class, 'update'])->name('admin_category_update');
+    Route::post('destroy', [CategoryController::class, 'destroy'])->name('admin_category_destroy');
 });
