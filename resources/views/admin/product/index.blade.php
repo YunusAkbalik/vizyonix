@@ -31,6 +31,7 @@
                     <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Medya</th>
                         <th>Başlık</th>
                         <th>Açıklama</th>
                         <th>Fiyat</th>
@@ -41,6 +42,7 @@
                     @foreach($products as $product)
                         <tr>
                             <td>#{{$product->id}}</td>
+                            <td><img src="{{$product->image[0]->path}}" alt="{{$product->title}}" width="150px"> </td>
                             <td>{{$product->title}}</td>
                             <td>{{$product->description}}</td>
                             <td>@moneyFormat($product->price) $</td>
