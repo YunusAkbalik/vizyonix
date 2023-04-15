@@ -291,6 +291,13 @@
                             @endif
                         </a>
                     </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link {{ Route::currentRouteName() == 'admin_coupon_index' ? 'active' : '' }}"
+                           href="{{ route('admin_coupon_index') }}">
+                            <i class="nav-main-link-icon fa fa-ticket"></i>
+                            <span class="nav-main-link-name">Kuponlar</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- END Side Navigation -->

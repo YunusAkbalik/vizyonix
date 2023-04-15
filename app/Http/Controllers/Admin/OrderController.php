@@ -35,6 +35,8 @@ class OrderController extends Controller
     {
         try {
             $order = Order::find($request->id);
+            if(!$order)
+                throw new Exception('Sipariş bulunamadı.');
             $order->order_status = $request->order_status;
             $order->payment_status = $request->payment_status;
             $order->save();

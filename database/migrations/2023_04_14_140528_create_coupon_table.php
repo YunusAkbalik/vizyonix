@@ -19,7 +19,8 @@ return new class extends Migration
             $table->float('discount');
             $table->float('min_purchase');
             $table->integer('usage_limit');
-            $table->string('usage_date');
+            $table->date('usage_date_start');
+            $table->date('usage_date_end');
             $table->integer('status');
             $table->timestamps();
         });
