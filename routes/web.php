@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\ProductImageController;
+use App\Http\Controllers\Admin\ProductImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,4 +37,9 @@ Route::prefix('category')->group(function () {
     Route::get('/{id}', [CategoryController::class, 'edit'])->name('admin_category_edit');
     Route::post('update', [CategoryController::class, 'update'])->name('admin_category_update');
     Route::post('destroy', [CategoryController::class, 'destroy'])->name('admin_category_destroy');
+});
+Route::prefix('order')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('admin_order_index');
+    Route::get('/{id}', [OrderController::class, 'show'])->name('admin_order_show');
+    Route::post('updateStatus', [OrderController::class, 'updateStatus'])->name('admin_order_updateStatus');
 });

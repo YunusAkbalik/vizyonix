@@ -28,13 +28,12 @@ return new class extends Migration
             $table->string('order_status');
             $table->float('total_price');
             $table->string('coupon_code');
-            $table->string('coupon_discount');
+            $table->float('coupon_discount');
             $table->float('shipping_amount');
             $table->string('grand_total');
             $table->string('note');
             $table->string('user_id');
             $table->string('coupon_id')->default(0);
-            $table->string('shipping_id');
             $table->string('payment_id');
             $table->timestamps();
         });

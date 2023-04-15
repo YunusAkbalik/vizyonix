@@ -19,35 +19,35 @@ class OrderStatusSeeder extends Seeder
             [
                 'name' => "Processing",
                 'description' => "Your order has not yet been prepared and is being processed.",
-                'color' => "orange"
+                'color' => "warning"
             ], [
                 'name' => "Shipped",
                 'description' => "Your order has been shipped and is in transit.",
-                'color' => "blue"
+                'color' => "primary"
             ], [
                 'name' => "Delivered",
                 'description' => "Your order has been delivered and reached the customer.",
-                'color' => "green"
+                'color' => "success"
             ], [
                 'name' => "Cancelled",
                 'description' => "Your order has been cancelled and no action has been taken.",
-                'color' => "red"
+                'color' => "danger"
             ], [
                 'name' => "Returned",
                 'description' => "Your order has been returned and the refund process has started.",
-                'color' => "purple"
+                'color' => "info"
             ], [
                 'name' => "On Hold",
                 'description' => "Your order has been put on hold for a reason and cannot be processed further.",
-                'color' => "yellow"
+                'color' => "danger"
             ], [
                 'name' => "Ready for Pickup",
                 'description' => "Your order is ready and waiting for the customer to pick up.",
-                'color' => "green"
+                'color' => "success"
             ], [
                 'name' => "Out of Stock",
                 'description' => "The products in your order are out of stock and the order cannot be processed.",
-                'color' => "red"
+                'color' => "danger"
             ],
         ]);
     }

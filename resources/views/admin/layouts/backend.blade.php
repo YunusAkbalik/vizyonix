@@ -268,13 +268,6 @@
             <div class="content-side content-side-full">
                 <ul class="nav-main">
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <i class="nav-main-link-icon fa fa-location-arrow"></i>
-                            <span class="nav-main-link-name">Dashboard</span>
-                            <span class="nav-main-link-badge badge rounded-pill bg-primary">5</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
                         <a class="nav-main-link {{ Route::currentRouteName() == 'admin_product_index' ? 'active' : '' }}"
                            href="{{ route('admin_product_index') }}">
                             <i class="nav-main-link-icon fa fa-box"></i>
@@ -286,6 +279,16 @@
                            href="{{ route('admin_category_index') }}">
                             <i class="nav-main-link-icon fa fa-boxes"></i>
                             <span class="nav-main-link-name">Kategoriler</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link {{ Route::currentRouteName() == 'admin_order_index' ? 'active' : '' }}"
+                           href="{{ route('admin_order_index') }}">
+                            <i class="nav-main-link-icon fa fa-star"></i>
+                            <span class="nav-main-link-name">Siparişler</span>
+                            @if($ordersCount)
+                                <span class="nav-main-link-badge badge rounded-pill bg-primary">{{$ordersCount}}</span>
+                            @endif
                         </a>
                     </li>
                 </ul>

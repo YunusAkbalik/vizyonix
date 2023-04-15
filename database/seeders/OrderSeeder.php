@@ -35,7 +35,6 @@ class OrderSeeder extends Seeder
                 'note' => 'Fast plz',
                 'user_id' => 1,
                 'coupon_id' => 1,
-                'shipping_id' => 1,
                 'payment_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
