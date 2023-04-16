@@ -44,8 +44,8 @@
                                 @csrf
                                 <div class="mb-4">
                                     <div class="input-group input-group-lg">
-                                        <input type="text" class="form-control" id="email"
-                                               name="email" placeholder="Username">
+                                        <input type="email" class="form-control" id="email"
+                                               name="email" placeholder="E-posta adresi">
                                         <span class="input-group-text">
                           <i class="fa fa-user-circle"></i>
                         </span>
@@ -54,7 +54,7 @@
                                 <div class="mb-4">
                                     <div class="input-group input-group-lg">
                                         <input type="password" class="form-control" id="password"
-                                               name="password" placeholder="Password">
+                                               name="password" placeholder="Şifre">
                                         <span class="input-group-text">
                           <i class="fa fa-asterisk"></i>
                         </span>

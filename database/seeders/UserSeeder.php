@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'email' => 'info@vizyonix.com',
             'password' => bcrypt('123'),
+            'phone' => '+905350000000',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

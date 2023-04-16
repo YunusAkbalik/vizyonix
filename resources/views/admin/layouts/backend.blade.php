@@ -298,6 +298,13 @@
                             <span class="nav-main-link-name">Kuponlar</span>
                         </a>
                     </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link {{ Route::currentRouteName() == 'admin_user_index' ? 'active' : '' }}"
+                           href="{{ route('admin_user_index') }}">
+                            <i class="nav-main-link-icon fa fa-users"></i>
+                            <span class="nav-main-link-name">Kullanıcılar</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- END Side Navigation -->
@@ -366,7 +373,7 @@
                             <!-- END Side Overlay -->
 
                             <div role="separator" class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">
+                            <a class="dropdown-item" href="{{route('logout')}}">
                                 <i class="far fa-fw fa-arrow-alt-circle-left me-1"></i> Sign Out
                             </a>
                         </div>
