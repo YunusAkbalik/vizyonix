@@ -98,8 +98,8 @@
 
                     <!-- User Info -->
                     <div class="ms-2">
-                        <a class="text-white fw-semibold" href="javascript:void(0)">George Taylor</a>
-                        <div class="text-white-75 fs-sm">Full Stack Developer</div>
+                        <a class="text-white fw-semibold" href="javascript:void(0)">{{auth()->user()->name}}</a>
+                        <div class="text-white-75 fs-sm">Admin</div>
                     </div>
                     <!-- END User Info -->
 
@@ -326,13 +326,7 @@
                 </button>
                 <!-- END Toggle Sidebar -->
 
-                <!-- Open Search Section -->
-                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                <button type="button" class="btn btn-alt-secondary" data-toggle="layout" data-action="header_search_on">
-                    <i class="fa fa-fw opacity-50 fa-search"></i> <span
-                        class="ms-1 d-none d-sm-inline-block">Search</span>
-                </button>
-                <!-- END Open Search Section -->
+
             </div>
             <!-- END Left Section -->
 
@@ -351,28 +345,6 @@
                             User Options
                         </div>
                         <div class="p-2">
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="far fa-fw fa-user me-1"></i> Profile
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between"
-                               href="javascript:void(0)">
-                                <span><i class="far fa-fw fa-envelope me-1"></i> Inbox</span>
-                                <span class="badge bg-primary rounded-pill">3</span>
-                            </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="far fa-fw fa-file-alt me-1"></i> Invoices
-                            </a>
-                            <div role="separator" class="dropdown-divider"></div>
-
-                            <!-- Toggle Side Overlay -->
-                            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                            <a class="dropdown-item" href="javascript:void(0)" data-toggle="layout"
-                               data-action="side_overlay_toggle">
-                                <i class="far fa-fw fa-building me-1"></i> Settings
-                            </a>
-                            <!-- END Side Overlay -->
-
-                            <div role="separator" class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{route('logout')}}">
                                 <i class="far fa-fw fa-arrow-alt-circle-left me-1"></i> Sign Out
                             </a>
@@ -452,11 +424,11 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="p-2 border-top">
-                            <a class="btn btn-alt-primary w-100 text-center" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-eye opacity-50 me-1"></i> View All
-                            </a>
-                        </div>
+{{--                        <div class="p-2 border-top">--}}
+{{--                            <a class="btn btn-alt-primary w-100 text-center" href="javascript:void(0)">--}}
+{{--                                <i class="fa fa-fw fa-eye opacity-50 me-1"></i> View All--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <!-- END Notifications Dropdown -->
@@ -472,25 +444,6 @@
             <!-- END Right Section -->
         </div>
         <!-- END Header Content -->
-
-        <!-- Header Search -->
-        <div id="page-header-search" class="overlay-header bg-header-dark">
-            <div class="content-header">
-                <form class="w-100" action="/dashboard" method="POST">
-                    @csrf
-                    <div class="input-group">
-                        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                        <button type="button" class="btn btn-alt-primary" data-toggle="layout"
-                                data-action="header_search_off">
-                            <i class="fa fa-fw fa-times-circle"></i>
-                        </button>
-                        <input type="text" class="form-control border-0" placeholder="Search or hit ESC.."
-                               id="page-header-search-input" name="page-header-search-input">
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- END Header Search -->
 
         <!-- Header Loader -->
         <!-- Please check out the Loaders page under Components category to see examples of showing/hiding it -->
