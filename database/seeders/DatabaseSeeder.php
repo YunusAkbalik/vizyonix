@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
             CouponStatusSeeder::class,
             RolesAndPermissionsSeeder::class,
             UserSeeder::class,
+            AddressSeeder::class,
+            UserAddressSeeder::class,
+            CountriesSeeder::class,
         ]);
     }
 }

@@ -9,10 +9,14 @@
                     <div class="account__left--sidebar">
                         <h2 class="account__content--title h3 mb-20">My Profile</h2>
                         <ul class="account__menu">
-                            <li class="account__menu--list active"><a href="#" type="button" data-bs-toggle="collapse"  data-bs-target="#my-orders" aria-expanded="false" aria-controls="my-orders">My Orders</a></li>
-                            <li class="account__menu--list"><a href="#" data-bs-toggle="collapse" data-bs-target="#my-addresses" aria-expanded="false" aria-controls="my-addresses">My Addresses</a></li>
+                            <li class="account__menu--list active"><a href="#" type="button" data-bs-toggle="collapse"
+                                                                      data-bs-target="#my-orders" aria-expanded="false"
+                                                                      aria-controls="my-orders">My Orders</a></li>
+                            <li class="account__menu--list"><a href="#" data-bs-toggle="collapse"
+                                                               data-bs-target="#my-addresses" aria-expanded="false"
+                                                               aria-controls="my-addresses">My Addresses</a></li>
                             <li class="account__menu--list"><a href="wishlist.html">Wishlist</a></li>
-                            <li class="account__menu--list"><a href="login.html">Log Out</a></li>
+                            <li class="account__menu--list"><a href="{{route('logout')}}">Log Out</a></li>
                         </ul>
                     </div>
                     <div class="account__wrapper" id="parentDiv">
@@ -53,16 +57,93 @@
                                                 <span>$@moneyFormat($order->grand_total) USD</span>
                                             </td>
                                         </tr>
-
                                     @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div id="my-addresses" data-bs-parent="#parentDiv" class="account__content collapse collapse-horizontal">
-                            <h2 class="account__content--title h3 mb-20">My Adresses</h2>
-                            <div class="account__table--area">
-                                adresses
+                        <div id="my-addresses" data-bs-parent="#parentDiv"
+                             class="account__content collapse collapse-horizontal">
+                            <h2 class="account__content--title h3 mb-20">Addresses</h2>
+                            <button class="new__address--btn btn mb-25" data-bs-toggle="collapse"
+                                    data-bs-target="#new-addresses" aria-expanded="false"
+                                    aria-controls="new-addresses">Add a new address
+                            </button>
+                            <div class="row">
+                                @foreach($user_addresses as $address)
+                                    <div class="col-md-6 mb-4">
+                                        <div class="account__details two">
+                                            <h3 class="account__details--title h4">{{$address->address->name}}</h3>
+                                            <p class="account__details--desc">{{$address->address->username}}
+                                                <br> {{$address->address->address}}
+                                                <br> {{$address->address->city}} {{$address->address->state}} {{$address->address->zip}}
+                                                <br>
+                                                {{$address->address->country}}</p>
+                                        </div>
+                                        <div class="account__details--footer d-flex">
+                                            <button class="account__details--footer__btn" type="button">Edit</button>
+                                            <button class="account__details--footer__btn" type="button">Delete</button>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div id="new-addresses" data-bs-parent="#parentDiv"
+                             class="account__content collapse collapse-horizontal">
+                            <h2 class="account__content--title h3 mb-20">Add New Address</h2>
+                            <div class="row">
+                                <form id="new_address">
+                                    @csrf
+                                    <label>
+                                        <input class="account__login--input" required name="name"
+                                               placeholder="Address name etc. (Home)"
+                                               type="text">
+                                    </label>
+                                    <label>
+                                        <input class="account__login--input" required name="username"
+                                               placeholder="Your Name etc. (John Doe)"
+                                               type="text">
+                                    </label>
+                                    <label>
+                                        <textarea required name="address" class="account__login--input"
+                                                  placeholder="Address"
+                                                  cols="30" rows="3"></textarea>
+                                    </label>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-4">
+                                            <input class="account__login--input" required name="city"
+                                                   placeholder="City etc. (New York)"
+                                                   type="text">
+                                        </div>
+                                        <div class="col-md-2 mb-4">
+                                            <input class="account__login--input" required name="zip"
+                                                   placeholder="Zip"
+                                                   type="number">
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <select required name="country" class="account__login--input" id="">
+                                                <option value="" selected disabled>Select Country</option>
+                                                @foreach($countries as $country)
+                                                    <option value="{{$country->id}}">{{$country->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <input class="account__login--input" required name="email"
+                                                   placeholder="E-mail"
+                                                   type="email">
+                                        </div>
+
+                                        <div class="col-md-6 mb-4">
+                                            <input class="account__login--input" required name="phone"
+                                                   placeholder="Phone"
+                                                   type="text">
+                                        </div>
+                                    </div>
+                                    <button class="account__login--btn btn" type="submit">Save My Address</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -126,8 +207,32 @@
             });
         });
         $('.account__menu--list').click(function () {
-          $('.account__menu--list').removeClass('active')
-          $(this).addClass('active')
+            $('.account__menu--list').removeClass('active')
+            $(this).addClass('active')
         })
+        $('#new_address').submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: "{{route('new_address')}}",
+                type: "POST",
+                data: $(this).serialize(),
+                success: function (response) {
+                    Swal.fire(
+                        'Succuess',
+                        response.message,
+                        'success'
+                    ).then(() => {
+                        location.reload()
+                    })
+                },
+                error: function (response) {
+                    Swal.fire(
+                        'Error',
+                        response.responseJSON.message,
+                        'error'
+                    )
+                }
+            })
+        });
     </script>
 @endsection

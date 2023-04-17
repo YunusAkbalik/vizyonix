@@ -123,7 +123,7 @@
                             </a>
                         </li>
                         <li class="header__account--items d-none d-lg-block">
-                            <a class="header__account--btn" href="my-account.html">
+                            <a class="header__account--btn" href="{{route('my_account')}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20.51" height="19.443"
                                      viewBox="0 0 512 512">
                                     <path
@@ -698,7 +698,7 @@
                         </h3>
                         <ul class="footer__widget--menu footer__widget--inner">
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                                                      href="my-account.html">My Account</a></li>
+                                                                      href="{{route('my_account')}}">My Account</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
                                                                       href="cart.html">Shopping Cart</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
