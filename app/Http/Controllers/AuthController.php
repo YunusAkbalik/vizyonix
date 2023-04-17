@@ -32,7 +32,7 @@ class AuthController extends Controller
     {
         try {
             Auth::logout();
-            return redirect()->route('admin_dashboard');
+            return redirect()->route('home');
         } catch (Exception $exception) {
             return response()->json(['message' => $exception->getMessage()], 400);
         }

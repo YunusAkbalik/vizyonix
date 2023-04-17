@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Customer\UserController as CustomerUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\HomeController as CustomerHomeController;
 
@@ -23,10 +24,12 @@ use App\Http\Controllers\Customer\HomeController as CustomerHomeController;
 */
 
 Route::post('login', [AuthController::class, 'login'])->middleware('guest')->name('login_post');
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::get('/',[CustomerHomeController::class,'index'])->name('home');
+Route::get('login', function () {return view('customer.auth.login');})->middleware('guest')->name('login');
+Route::get('my-account',[CustomerUserController::class,'index'])->middleware('auth')->name('my_account');
+
 
 Route::prefix('admin')->group(function () {
     Route::get('login', function () {

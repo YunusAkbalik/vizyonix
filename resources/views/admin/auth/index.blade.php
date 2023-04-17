@@ -120,7 +120,7 @@
                 const formData = new FormData(this);
                 $.ajax({
                     type: 'POST',
-                    url: '{{route('admin_login')}}',
+                    url: '{{route('login_post')}}',
                     data: formData,
                     processData: false,
                     contentType: false,
