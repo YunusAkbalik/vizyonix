@@ -24,7 +24,7 @@
         <div class="block block-rounded h-100 mb-0">
           <div class="block-header block-header-default">
             <h3 class="block-title">
-              Welcome to your app
+              Welcome to Vizyonix
             </h3>
           </div>
           <div class="block-content">
