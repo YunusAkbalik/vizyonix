@@ -17,7 +17,7 @@ trait AddressValidator
             'zip' => 'required|numeric',
             'country' => 'required|numeric',
             'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required|numeric|digits:10',
         ];
     }
 
