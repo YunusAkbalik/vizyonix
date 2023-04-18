@@ -19,7 +19,12 @@ class DatabaseSeeder extends Seeder
             OrderStatusSeeder::class,
             PaymentStatusSeeder::class,
             CouponSeeder::class,
-            CouponStatusSeeder::class
+            CouponStatusSeeder::class,
+            RolesAndPermissionsSeeder::class,
+            UserSeeder::class,
+            AddressSeeder::class,
+            UserAddressSeeder::class,
+            CountriesSeeder::class,
         ]);
     }
 }
