@@ -240,7 +240,7 @@
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
                                                                           href="404.html">404 Page</a></li>
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
-                                                                          href="login.html">Login Page</a></li>
+                                                                          href="{{route('login')}}">Login Page</a></li>
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
                                                                           href="faq.html">Faq Page</a></li>
                                 </ul>
@@ -294,7 +294,7 @@
                             </li>
                             <li class="offcanvas__sub_menu_li"><a href="wishlist.html" class="offcanvas__sub_menu_item">Wishlist
                                     Page</a></li>
-                            <li class="offcanvas__sub_menu_li"><a href="login.html" class="offcanvas__sub_menu_item">Login
+                            <li class="offcanvas__sub_menu_li"><a href="{{route('login')}}" class="offcanvas__sub_menu_item">Login
                                     Page</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="404.html" class="offcanvas__sub_menu_item">Error
                                     Page</a></li>
@@ -304,7 +304,7 @@
                     <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="contact.html">Contact</a></li>
                 </ul>
                 <div class="offcanvas__account--items">
-                    <a class="offcanvas__account--items__btn d-flex align-items-center" href="login.html">
+                    <a class="offcanvas__account--items__btn d-flex align-items-center" href="{{route('login')}}">
                             <span class="offcanvas__account--items__icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20.51" height="19.443"
                                      viewBox="0 0 512 512"><path
@@ -704,9 +704,9 @@
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
                                                                       href="checkout.html">Checkout</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                                                      href="login.html">Login</a></li>
+                                                                      href="{{route('login')}}">Login</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                                                      href="login.html">Register</a></li>
+                                                                      href="{{route('login')}}">Register</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
                                                                       href="compare.html">Compare</a></li>
                         </ul>
