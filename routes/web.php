@@ -32,6 +32,8 @@ Route::get('login', function () {
     return view('customer.auth.login');
 })->middleware('guest')->name('login');
 
+Route::post('register', [AuthController::class, 'register'])->middleware('guest')->name('register_post');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('my-account', [CustomerUserController::class, 'index'])->name('my_account');
     Route::post('new-address', [AddressController::class, 'store'])->name('new_address');

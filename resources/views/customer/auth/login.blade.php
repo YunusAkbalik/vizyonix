@@ -15,16 +15,19 @@
                                     @csrf
                                     <div class="account__login--inner">
                                         <label>
-                                            <input class="account__login--input" required name="email" placeholder="Email Addres"
+                                            <input class="account__login--input" required name="email"
+                                                   placeholder="Email Addres"
                                                    type="email">
                                         </label>
                                         <label>
-                                            <input class="account__login--input" required name="password" placeholder="Password" type="password">
+                                            <input class="account__login--input" required name="password"
+                                                   placeholder="Password" type="password">
                                         </label>
                                         <div
                                             class="account__login--remember__forgot mb-15 d-flex justify-content-between align-items-center">
                                             <div class="account__login--remember position__relative">
-                                                <input class="checkout__checkbox--input" name="remember_me" checked type="checkbox">
+                                                <input class="checkout__checkbox--input" name="remember_me" checked
+                                                       type="checkbox">
                                                 <span class="checkout__checkbox--checkmark"></span>
                                                 <label class="checkout__checkbox--label login__remember--label"
                                                        for="check1">
@@ -45,23 +48,30 @@
                                     <h2 class="account__login--header__title h3 mb-10">Create an Account</h2>
                                 </div>
                                 <form id="register-form" action="javascript:void(0)">
+                                    @csrf
                                     <div class="account__login--inner">
                                         <label>
-                                            <input class="account__login--input" required placeholder="Name"
+                                            <input class="account__login--input" required name="name" placeholder="Name"
                                                    type="text">
                                         </label>
                                         <label>
-                                            <input class="account__login--input" name="email" required placeholder="Email Addres"
+                                            <input class="account__login--input" required name="phone" placeholder="Phone Number"
+                                                   type="text">
+                                        </label>
+                                        <label>
+                                            <input class="account__login--input" name="email" required
+                                                   placeholder="Email Addres"
                                                    type="email">
                                         </label>
                                         <label>
-                                            <input class="account__login--input" name="password" required placeholder="Password"
+                                            <input class="account__login--input" name="password" required
+                                                   placeholder="Password"
                                                    type="password">
                                         </label>
-                                        <button class="account__login--btn btn mb-10" type="submit">Register
+                                        <button class="account__login--btn btn mb-10" id="register-btn" type="submit">Register
                                         </button>
                                         <div class="account__login--remember position__relative">
-                                            <input class="checkout__checkbox--input" required id="check2"
+                                            <input class="checkout__checkbox--input" required name="accept_terms" id="check2"
                                                    type="checkbox">
                                             <span class="checkout__checkbox--checkmark"></span>
                                             <label class="checkout__checkbox--label login__remember--label"
@@ -131,7 +141,6 @@
     <script>
         $('#login-form').submit(function (e) {
             e.preventDefault()
-            console.log($(this).valid())
             if ($(this).valid()) {
                 const formData = new FormData(this);
                 $.ajax({
@@ -141,8 +150,13 @@
                     processData: false,
                     contentType: false,
                     success: function (data) {
-                        location.href = "{{route('home')}}";
-                        return;
+                        Swal.fire(
+                            'Success!',
+                            data.message,
+                            'success'
+                        ).then(() => {
+                            location.reload()
+                        })
                     },
                     error: function (data) {
                         Swal.fire(
@@ -150,11 +164,50 @@
                             data.responseJSON.message,
                             'error'
                         )
-                        return;
                     }
                 });
             }
 
+        });
+        $('#register-form').submit(function (e) {
+            e.preventDefault()
+            if ($(this).valid()) {
+                $('#register-btn').prop('disabled', true);
+                $('#register-btn').html('Registering...');
+                $('#register-btn').addClass('loading');
+                $('#register-btn').removeClass('btn-primary');
+                $('#register-btn').addClass('btn-secondary');
+
+                const formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route('register_post')}}',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        Swal.fire(
+                            'Success!',
+                            data.message,
+                            'success'
+                        ).then(() => {
+                            location.reload()
+                        })
+                    },
+                    error: function (data) {
+                        $('#register-btn').prop('disabled', false);
+                        $('#register-btn').html('Register');
+                        $('#register-btn').removeClass('loading');
+                        $('#register-btn').addClass('btn-primary');
+                        $('#register-btn').removeClass('btn-secondary');
+                        Swal.fire(
+                            'Error!',
+                            data.responseJSON.message,
+                            'error'
+                        )
+                    }
+                });
+            }
         });
     </script>
 

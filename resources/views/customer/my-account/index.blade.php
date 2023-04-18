@@ -16,7 +16,7 @@
                                                                data-bs-target="#my-addresses" aria-expanded="false"
                                                                aria-controls="my-addresses">My Addresses</a></li>
                             <li class="account__menu--list"><a href="wishlist.html">Wishlist</a></li>
-                            <li class="account__menu--list"><a href="{{route('logout')}}">Log Out</a></li>
+                            <li class="account__menu--list"><a href="javascript:void(0)" onclick="logout()">Log Out</a></li>
                         </ul>
                     </div>
                     <div class="account__wrapper" id="parentDiv">
@@ -234,5 +234,29 @@
                 }
             })
         });
+
+        function logout() {
+            $.ajax({
+                url: "{{route('logout')}}",
+                type: "GET",
+                data: {},
+                success: function (response) {
+                    Swal.fire(
+                        'Succuess',
+                        response.message,
+                        'success'
+                    ).then(() => {
+                        location.reload()
+                    })
+                },
+                error: function (response) {
+                    Swal.fire(
+                        'Error',
+                        response.responseJSON.message,
+                        'error'
+                    )
+                }
+            })
+        }
     </script>
 @endsection
