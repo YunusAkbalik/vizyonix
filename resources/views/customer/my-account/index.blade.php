@@ -16,7 +16,8 @@
                                                                data-bs-target="#my-addresses" aria-expanded="false"
                                                                aria-controls="my-addresses">My Addresses</a></li>
                             <li class="account__menu--list"><a href="wishlist.html">Wishlist</a></li>
-                            <li class="account__menu--list"><a href="javascript:void(0)" onclick="logout()">Log Out</a></li>
+                            <li class="account__menu--list"><a href="javascript:void(0)" onclick="logout()">Log Out</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="account__wrapper" id="parentDiv">
@@ -82,7 +83,7 @@
                                         </div>
                                         <div class="account__details--footer d-flex">
                                             <button class="account__details--footer__btn" type="button">Edit</button>
-                                            <button class="account__details--footer__btn" type="button">Delete</button>
+                                            <button onclick="deleteAddress({{$address->id}})" class="account__details--footer__btn" type="button">Delete</button>
                                         </div>
                                     </div>
                                 @endforeach
@@ -243,6 +244,33 @@
                 success: function (response) {
                     Swal.fire(
                         'Succuess',
+                        response.message,
+                        'success'
+                    ).then(() => {
+                        location.reload()
+                    })
+                },
+                error: function (response) {
+                    Swal.fire(
+                        'Error',
+                        response.responseJSON.message,
+                        'error'
+                    )
+                }
+            })
+        }
+
+        function deleteAddress(id) {
+            $.ajax({
+                url: "{{route('delete_address')}}",
+                type: "POST",
+                data: {
+                    id: id,
+                    '_token': '{{csrf_token()}}'
+                },
+                success: function (response) {
+                    Swal.fire(
+                        'Success',
                         response.message,
                         'success'
                     ).then(() => {

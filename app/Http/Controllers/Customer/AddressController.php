@@ -7,6 +7,7 @@ use App\Http\Validators\AddressValidator;
 use App\Models\Address;
 use App\Models\Countries;
 use App\Models\UserAddress;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -40,6 +41,18 @@ class AddressController extends Controller
             return response()->json(['message' => 'Address created successfully'], 200);
         } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+
+    public function destroy(Request $request): JsonResponse
+    {
+        try {
+            UserAddress::where('address_id', $request->id)
+                ->where('user_id', auth()->user()->id)
+                ->firstOrFail()->destroy($request->input('id'));
+            return response()->json(['message' => 'Address deleted successfully'], 200);
+        } catch (Exception $e) {
+            return response()->json(['message' => "Adress not found"], 500);
         }
     }
 }
