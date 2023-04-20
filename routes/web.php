@@ -37,6 +37,7 @@ Route::post('register', [AuthController::class, 'register'])->middleware('guest'
 Route::group(['middleware' => 'auth'], function () {
     Route::get('my-account', [CustomerUserController::class, 'index'])->name('my_account');
     Route::post('new-address', [AddressController::class, 'store'])->name('new_address');
+    Route::post('delete-address', [AddressController::class, 'destroy'])->name('delete_address');
 });
 
 
